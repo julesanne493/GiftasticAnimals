@@ -23,10 +23,14 @@ var topics = ["Dog", "Cat", "Emu", "Octopus", "Mouse", "Koala", "Owl", "Kangaroo
             topics.push(animalAdd);
     
             renderButtons();
+
+            $("button").on("click", displayGif)
+
         })
   
+    function displayGif(){
 
-    $("button").on("click", function() {
+    //$("button").on("click", function() {
         
       var animal = $(this).attr("data-name");
       var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ animal + "&api_key=AoZa2gNfezsLCXbt8w4TqWQKYpVWdBIK&limit=10";
@@ -71,7 +75,9 @@ var topics = ["Dog", "Cat", "Emu", "Octopus", "Mouse", "Koala", "Owl", "Kangaroo
             })
           }
         });
-    });
+    }
+
+    $(document).on("click", ".animal", displayGif);
 
 
 
