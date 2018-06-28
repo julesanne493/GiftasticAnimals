@@ -12,9 +12,7 @@ var topics = ["Dog", "Cat", "Emu", "Octopus", "Mouse", "Koala", "Owl", "Kangaroo
             $("#animal-buttons").append(a);
         }
     }
-        renderButtons();
 
-    
         $("#find-gif").on("click", function(event){
             event.preventDefault();
     
@@ -47,37 +45,47 @@ var topics = ["Dog", "Cat", "Emu", "Octopus", "Mouse", "Koala", "Owl", "Kangaroo
 
             var animalImage = $("<img>");
 
-            var animalStill = (results[i].images.fixed_height_still.url);
-            var animalAnimate = (results[i].images.fixed_height.url);
+            animalImage.attr("src", results[i].images.fixed_height_still.url);
 
-            animalImage.attr("src", animalStill);
+            animalImage.attr("data-state");
 
-            animalImage.attr("data-state", "still");
+            animalImage.attr("data-still", results[i].images.fixed_height_still.url)
+
+            animalImage.attr("data-animate", results[i].images.fixed_height.url)
+
+            animalImage.attr("data-state", "still")
 
             gifDiv.prepend(animalImage);
 
             $("#animal-gifs").prepend(gifDiv);
+        }
 
             $("img").on("click", function() {
+                
                 var state = $(this).attr("data-state");
             
-                console.log (state)
-            
                 if (state ==="still") {
+                    $(this).attr("src", $(this).data("animate"));
                     $(this).attr("data-state", "animate");
-                    animalImage.attr("src", animalAnimate);
+                    console.log(state)
                 }
             
                 else if (state==="animate") {
+                    $(this).attr("src", $(this).data("still"));
                     $(this).attr("data-state", "still");
-                    animalImage.attr("src", animalStill);
+                    console.log(state)
                 }
             })
-          }
+          
         });
     }
+    renderButtons();
 
     $(document).on("click", ".animal", displayGif);
+
+
+
+    
 
 
 
