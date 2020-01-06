@@ -42,21 +42,13 @@ var topics = ["Dog", "Cat", "Emu", "Octopus", "Mouse", "Koala", "Owl", "Kangaroo
 
           for (var i = 0; i < results.length; i++) {
             var gifDiv = $("<div class='item'>");
-
             var animalImage = $("<img>");
-
             animalImage.attr("src", results[i].images.fixed_height_still.url);
-
             animalImage.attr("data-state");
-
             animalImage.attr("data-still", results[i].images.fixed_height_still.url)
-
             animalImage.attr("data-animate", results[i].images.fixed_height.url)
-
             animalImage.attr("data-state", "still")
-
             gifDiv.prepend(animalImage);
-
             $("#animal-gifs").prepend(gifDiv);
         }
 
